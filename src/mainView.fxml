@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.media.MediaView?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainViewController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -59,7 +59,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="340.0" fitWidth="341.0" layoutX="258.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="340.0" fitWidth="341.0" layoutX="258.0" layoutY="12.0" onMouseClicked="#loadPicture" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@cat_paw.jpg" />
                                  </image>
@@ -67,7 +67,7 @@
                                     <Cursor fx:constant="OPEN_HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button layoutX="14.0" layoutY="493.0" mnemonicParsing="false" text="Button" />
+                              <Button id="openButton" layoutX="14.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#loadPicture" text="Load picture" />
                               <ColorPicker layoutX="463.0" layoutY="493.0" />
                               <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="32.0" layoutY="82.0">
                                  <effect>
