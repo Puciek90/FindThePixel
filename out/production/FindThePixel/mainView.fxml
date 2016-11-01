@@ -59,7 +59,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="340.0" fitWidth="341.0" layoutX="258.0" layoutY="12.0" onMouseClicked="#loadPicture" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imageView" fitHeight="340.0" fitWidth="341.0" layoutX="258.0" layoutY="12.0" onMouseClicked="#loadPicture" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@cat_paw.jpg" />
                                  </image>
@@ -67,8 +67,8 @@
                                     <Cursor fx:constant="OPEN_HAND" />
                                  </cursor>
                               </ImageView>
-                              <Button id="openButton" layoutX="14.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#loadPicture" text="Load picture" />
-                              <ColorPicker layoutX="463.0" layoutY="493.0" />
+                              <Button id="openButton" layoutX="498.0" layoutY="356.0" mnemonicParsing="false" onMouseClicked="#loadPicture" text="Load picture" />
+                              <ColorPicker layoutX="258.0" layoutY="356.0" />
                               <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="32.0" layoutY="82.0">
                                  <effect>
                                     <Bloom threshold="1.0" />
