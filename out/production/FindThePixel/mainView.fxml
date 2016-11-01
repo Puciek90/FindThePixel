@@ -3,13 +3,14 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +18,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.media.MediaView?>
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainViewController">
    <columnConstraints>
@@ -69,16 +69,17 @@
                               </ImageView>
                               <Button id="openButton" layoutX="271.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#loadPicture" text="Load picture" />
                               <ColorPicker fx:id="colorPicker" layoutX="390.0" layoutY="370.0" />
-                              <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="32.0" layoutY="82.0">
-                                 <effect>
-                                    <Bloom threshold="1.0" />
-                                 </effect>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MediaView>
-                              <Button layoutX="44.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithOneThread" text="One thread" />
-                              <Button layoutX="170.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithFourThreads" text="Four threads" />
+                              <Button layoutX="14.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithOneThread" text="One thread" />
+                              <Button layoutX="125.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithFourThreads" text="Four threads" />
+                              <Separator layoutX="119.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="545.0" prefWidth="6.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="-7.0" />
+                              <TextField fx:id="textFieldOneThreadPixels" layoutX="12.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" />
+                              <TextField fx:id="textFieldOneThreadTime" layoutX="12.0" layoutY="108.0" prefHeight="26.0" prefWidth="96.0" />
+                              <TextField layoutX="136.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" />
+                              <TextField layoutX="136.0" layoutY="108.0" prefHeight="26.0" prefWidth="96.0" />
+                              <Label layoutX="24.0" layoutY="24.0" text="Pixel found" />
+                              <Label layoutX="28.0" layoutY="84.0" text="Time (ms)" />
+                              <Label layoutX="148.0" layoutY="24.0" text="Pixel found" />
+                              <Label layoutX="151.0" layoutY="84.0" text="Time (ms)" />
                            </children></AnchorPane>
                   </content>
                 </Tab>

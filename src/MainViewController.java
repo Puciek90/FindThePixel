@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.TextField;
 import javafx.scene.image.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -14,6 +15,12 @@ public class MainViewController {
 
     @FXML
     private ColorPicker colorPicker;
+
+    @FXML
+    private TextField textFieldOneThreadPixels;
+
+    @FXML
+    private TextField textFieldOneThreadTime;
 
     @FXML
     public void loadPicture() throws IOException {
@@ -58,6 +65,9 @@ public class MainViewController {
 
         double endTime = System.currentTimeMillis();
         double elapsedTime = endTime - startTime;
+
+        textFieldOneThreadPixels.setText(String.valueOf(pixelCounter));
+        textFieldOneThreadTime.setText(String.valueOf(elapsedTime));
 
         System.out.println(pixelCounter);
         System.out.println(elapsedTime + " ms");
