@@ -45,6 +45,8 @@ public class MainViewController {
         WritableImage writableImage = new WritableImage(widith, height);
         PixelWriter pixelWriter = writableImage.getPixelWriter();
 
+        double startTime = System.currentTimeMillis();
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < widith; x++) {
                 Color color = pixelReader.getColor(x,y);
@@ -54,7 +56,11 @@ public class MainViewController {
             }
         }
 
+        double endTime = System.currentTimeMillis();
+        double elapsedTime = endTime - startTime;
+
         System.out.println(pixelCounter);
+        System.out.println(elapsedTime + " ms");
 
     }
 
