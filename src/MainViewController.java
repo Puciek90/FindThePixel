@@ -1,9 +1,13 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.*;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,6 +81,17 @@ public class MainViewController {
     @FXML
     public void  findPixelWithFourThreads() {
         System.out.println("Four threads here!");
+    }
+
+    @FXML
+    public void showAbout() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("helpView.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("About");
+        stage.setResizable(false);
+        stage.show();
     }
 
 }
