@@ -1,17 +1,22 @@
+package findThePixel.mainView;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import findThePixel.picture.PictureDivider;
+import findThePixel.threads.ThreadsRunner;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class MainViewController {
     @FXML
@@ -27,9 +32,12 @@ public class MainViewController {
     private TextField textFieldOneThreadTime;
 
     @FXML
+    private TextField threadsNumber;
+
+    @FXML
     public void loadPicture() throws IOException {
         final FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open picture");
+        fileChooser.setTitle("Open findThePixel.picture");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*jpg"));
         File selectedFile = fileChooser.showOpenDialog(null);
@@ -41,51 +49,38 @@ public class MainViewController {
     }
 
     @FXML
-    public void findPixelWithOneThread() {
-        int pixelCounter = 0;
-        System.out.println("One thread here!");
-
-        Image image = imageView.getImage();
+    public void findPixelWithOneThread() throws ExecutionException, InterruptedException {
         Color colorPickerValue = colorPicker.getValue();
+        Image image = imageView.getImage();
 
-        PixelReader pixelReader = image.getPixelReader();
-
-        int widith = (int) image.getWidth();
-        int height = (int) image.getHeight();
-
-        WritableImage writableImage = new WritableImage(widith, height);
-        PixelWriter pixelWriter = writableImage.getPixelWriter();
+        ThreadsRunner threadsRunner = new ThreadsRunner(colorPickerValue, image, 1);
 
         double startTime = System.currentTimeMillis();
 
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < widith; x++) {
-                Color color = pixelReader.getColor(x,y);
-                if (Objects.equals(colorPickerValue, color)) {
-                    pixelCounter++;
-                }
-            }
-        }
+        int pixels = threadsRunner.runThreads();
 
         double endTime = System.currentTimeMillis();
         double elapsedTime = endTime - startTime;
 
-        textFieldOneThreadPixels.setText(String.valueOf(pixelCounter));
+        textFieldOneThreadPixels.setText(String.valueOf(pixels));
         textFieldOneThreadTime.setText(String.valueOf(elapsedTime));
-
-        System.out.println(pixelCounter);
-        System.out.println(elapsedTime + " ms");
-
     }
 
     @FXML
     public void  findPixelWithFourThreads() {
-        System.out.println("Four threads here!");
+        //na czas testów wycinania części obrazu
+
+        PictureDivider pictureDivider = new PictureDivider(imageView.getImage(), 4);
+        imageView.setImage(pictureDivider.dividePicture().get(0));
+
+//        Image writableImage = new WritableImage(imageView.getImage().getPixelReader(),275,0,95,380);
+//        imageView.setImage(writableImage);
+        System.out.println("Four findThePixel.threads here!");
     }
 
     @FXML
     public void showAbout() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("helpView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("findThePixel/aboutView/aboutView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);

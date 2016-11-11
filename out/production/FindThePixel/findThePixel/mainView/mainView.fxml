@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainViewController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="findThePixel.mainView.MainViewController">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -61,7 +61,7 @@
                            <children>
                               <ImageView fx:id="imageView" fitHeight="340.0" fitWidth="341.0" layoutX="258.0" layoutY="12.0" onMouseClicked="#loadPicture" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@cat_paw.jpg" />
+                                    <Image url="@../../../resources/cat_paw.jpg" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="OPEN_HAND" />
@@ -70,7 +70,7 @@
                               <Button id="openButton" layoutX="271.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#loadPicture" text="Load picture" />
                               <ColorPicker fx:id="colorPicker" layoutX="390.0" layoutY="370.0" />
                               <Button layoutX="14.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithOneThread" text="One thread" />
-                              <Button layoutX="125.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithFourThreads" text="Four threads" />
+                              <Button layoutX="125.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#findPixelWithFourThreads" text="Multi threads" />
                               <Separator layoutX="119.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="545.0" prefWidth="6.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="-7.0" />
                               <TextField fx:id="textFieldOneThreadPixels" layoutX="12.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" />
                               <TextField fx:id="textFieldOneThreadTime" layoutX="12.0" layoutY="108.0" prefHeight="26.0" prefWidth="96.0" />
@@ -80,6 +80,7 @@
                               <Label layoutX="28.0" layoutY="84.0" text="Time (ms)" />
                               <Label layoutX="148.0" layoutY="24.0" text="Pixel found" />
                               <Label layoutX="151.0" layoutY="84.0" text="Time (ms)" />
+                              <TextField fx:id="threadsNumber" layoutX="243.0" layoutY="463.0" prefHeight="26.0" prefWidth="203.0" promptText="put here number of threads" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
