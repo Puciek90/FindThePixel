@@ -74,8 +74,8 @@
                               <Separator layoutX="119.0" layoutY="-7.0" orientation="VERTICAL" prefHeight="545.0" prefWidth="6.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="-7.0" />
                               <TextField fx:id="textFieldOneThreadPixels" layoutX="12.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" />
                               <TextField fx:id="textFieldOneThreadTime" layoutX="12.0" layoutY="108.0" prefHeight="26.0" prefWidth="96.0" />
-                              <TextField layoutX="136.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" />
-                              <TextField layoutX="136.0" layoutY="108.0" prefHeight="26.0" prefWidth="96.0" />
+                              <TextField fx:id="textFieldMultiThreadPixels" layoutX="136.0" layoutY="48.0" prefHeight="26.0" prefWidth="96.0" />
+                              <TextField fx:id="textFieldMultiThreadTime" layoutX="136.0" layoutY="108.0" prefHeight="26.0" prefWidth="96.0" />
                               <Label layoutX="24.0" layoutY="24.0" text="Pixel found" />
                               <Label layoutX="28.0" layoutY="84.0" text="Time (ms)" />
                               <Label layoutX="148.0" layoutY="24.0" text="Pixel found" />

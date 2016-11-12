@@ -1,5 +1,7 @@
 package findThePixel.mainView;
 
+import findThePixel.picture.PictureDivider;
+import findThePixel.threads.ThreadsRunner;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import findThePixel.picture.PictureDivider;
-import findThePixel.threads.ThreadsRunner;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +30,12 @@ public class MainViewController {
 
     @FXML
     private TextField textFieldOneThreadTime;
+
+    @FXML
+    private TextField textFieldMultiThreadPixels;
+
+    @FXML
+    private TextField textFieldMultiThreadTime;
 
     @FXML
     private TextField threadsNumber;
@@ -62,20 +68,28 @@ public class MainViewController {
         double endTime = System.currentTimeMillis();
         double elapsedTime = endTime - startTime;
 
-        textFieldOneThreadPixels.setText(String.valueOf(pixels));
         textFieldOneThreadTime.setText(String.valueOf(elapsedTime));
+        textFieldOneThreadPixels.setText(String.valueOf(pixels));
     }
 
     @FXML
-    public void  findPixelWithFourThreads() {
-        //na czas testów wycinania części obrazu
+    public void  findPixelWithFourThreads() throws ExecutionException, InterruptedException {
+        Color colorPickerValue = colorPicker.getValue();
+        Image image = imageView.getImage();
+        PictureDivider pictureDivider = new PictureDivider(image, 4);
 
-        PictureDivider pictureDivider = new PictureDivider(imageView.getImage(), 4);
-        imageView.setImage(pictureDivider.dividePicture().get(0));
+        ThreadsRunner threadsRunner = new ThreadsRunner(colorPickerValue, pictureDivider.dividePicture(), 5);
 
-//        Image writableImage = new WritableImage(imageView.getImage().getPixelReader(),275,0,95,380);
-//        imageView.setImage(writableImage);
-        System.out.println("Four findThePixel.threads here!");
+        double startTime = System.currentTimeMillis();
+
+        int pixels = threadsRunner.runThreads();
+
+        double endTime = System.currentTimeMillis();
+        double elapsedTime = endTime - startTime;
+
+        textFieldMultiThreadTime.setText(String.valueOf(elapsedTime));
+        textFieldMultiThreadPixels.setText(String.valueOf(pixels));
+
     }
 
     @FXML
